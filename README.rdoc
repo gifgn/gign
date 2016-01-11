@@ -2,23 +2,30 @@
 
 This app use rails 4.1.4 and ruby 2.1.2.
 
-=== Install Rails/Ruby
+=== Prerequisites
 
-If you already have rails, you can't skip this part
-
-* Install ruby with rvm
- \curl -sSL https://get.rvm.io | bash -s stable --ruby
- rvm install 2.1.2
- 
-* Install rails
- rvm use 2.1.2
- gem install rails -v 4.1.4
+Install the latest version of [rvm](https://rvm.io/rvm/install)
  
 === Install the app
 
 * Clone the repository
- git clone https://github.com/ningirsu/gign
+ git clone https://github.com/gifgn/gign
  cd gign
+ 
+* As long as you get errors run (and follow the instructions):
+ rvm
+ 
+* When it's ok install bundler:
+ gem install bundler
+ 
+* Because of the mysql gem we need to install the following package even in development
+ sudo apt-get install libmysqlclient-dev
+
+* Run bundler
+ bundle install
+ 
+* Migrate (in development this app use sqlite3)
+ rake db:migrate
  
 * copy the example
  cp config/database.example.yml config/database.yml
@@ -26,13 +33,6 @@ If you already have rails, you can't skip this part
  
 * Add your steam api key (you can skip this part, but the steam module will not work)
 Go to http://steamcommunity.com/dev to get one, then edit config/application.rb with it
-
-
-* Run bundler
- bundle install
- 
-* Migrate (in development this app use sqlite3)
- rake db:migrate
 
 * Run the app
  rails s
